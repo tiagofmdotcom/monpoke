@@ -1,6 +1,22 @@
 import type { Product, ProductType } from '~/state/products'
 import { getProductTypeColor, PRODUCTS_PER_PAGE } from '~/state/products'
 
+type ProductApiResponse = {
+  id: number
+  name: string
+  pokemontypes: {
+    type: {
+      id: number
+      name: string
+    }
+  }[]
+}
+
+type ProductTypeApiResponse = {
+  name: string
+  id: number
+}
+
 const filterByTypeQuery = (type: string[] | null) => {
   if (type && type.length > 0) {
     return `, where: {
@@ -46,7 +62,7 @@ export const getProducts = async (type: string[] | null = null, offset: number =
     }),
   })
   const data = await response.json()
-  return (data.data.pokemon).map((result) => ({
+  return (data.data.pokemon).map((result: ProductApiResponse) => ({
     id: result.id,
     name: result.name.charAt(0).toUpperCase() + result.name.slice(1).toLowerCase(),
     imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${result.id}.png`,
@@ -77,7 +93,7 @@ export const getTypes = async () => {
     }),
   })
   const data = await response.json()
-  return (data.data.type).map((result) => ({
+  return (data.data.type).map((result: ProductTypeApiResponse) => ({
     name: result.name,
     id: result.id,
     color: getProductTypeColor(result.id - 1),

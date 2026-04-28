@@ -5,7 +5,7 @@ import '@pages/HomePage/home-page'
 export const appRoutes = [
   {
     name: 'home',
-    path: '/',
+    path: '/*',
     render: () => html`<home-page></home-page>`,
   },
 ] satisfies RouteConfig[]
