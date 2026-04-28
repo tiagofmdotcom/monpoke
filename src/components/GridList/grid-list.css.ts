@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css'
 
-export const gridStyle = style({
+export const grid = style({
   display: 'grid',
+  gridTemplateColumns: 'repeat(4, 1fr)',
   gap: '12px',
 })
