@@ -1,37 +1,38 @@
-import { style } from '@vanilla-extract/css'
+import { css } from 'lit'
 
-export const body = style({
-  margin: 0,
-})
+export default css`
+  :host {
+    display: block;
+  }
 
-export const subtleLink = style({
-  textDecoration: 'none',
-  color: 'inherit',
-  selectors: {
-    '&:hover': {
-      textDecoration: 'underline',
-    },
-  },
-})
+  .app-root {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
 
-export const appRoot = style({
-  padding: '16px',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '16px',
-})
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
 
-export const header = style({
-  display: 'flex',
-  justifyContent: 'space-between',
-})
+  .brand,
+  .nav-link {
+    color: inherit;
+    text-decoration: none;
+  }
 
-export const brand = style([subtleLink, {
-  fontWeight: 'bold',
-}]);
+  .brand:hover,
+  .nav-link:hover {
+    text-decoration: underline;
+  }
 
-export const navLink = style([subtleLink]);
+  .brand {
+    font-weight: bold;
+  }
 
-export const outlet = style({
-  display: 'block',
-})
+  .outlet {
+    display: block;
+  }
+`

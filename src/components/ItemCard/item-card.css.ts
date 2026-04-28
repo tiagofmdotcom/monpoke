@@ -1,10 +1,8 @@
-import { style } from '@vanilla-extract/css'
+import { css } from 'lit'
 
-export const card = style({
-  border: '1px solid #ddd',
-  padding: '12px',
-})
-
-export const heading = style({})
-
-export const description = style({})
+export default css`
+  .card {
+    border: 1px solid #ddd;
+    padding: 12px;
+  }
+`

@@ -3,34 +3,31 @@ import { Router } from '@lit-labs/router'
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { appRoutes } from './routes'
-import * as styles from './main.css'
+import styles from './main.css.ts'
 
 @customElement('app-root')
 class AppRoot extends LitElement {
-  private router = new Router(this, appRoutes)
+  static styles = styles
 
-  protected createRenderRoot() {
-    return this
-  }
+  private router = new Router(this, appRoutes)
 
   render() {
     return html`
-      <div class=${styles.appRoot}>
-        <header class=${styles.header}>
-          <a class=${styles.brand} href="/">MonPoke</a>
+      <div class="app-root">
+        <header class="header">
+          <a class="brand" href="/">MonPoke</a>
     
           <nav aria-label="Main navigation">
-            <a class=${styles.navLink} href="/">Overview</a>
+            <a class="nav-link" href="/">Overview</a>
           </nav>
         </header>
 
-        <main class=${styles.outlet}>${this.router.outlet()}</main>
+        <main class="outlet">${this.router.outlet()}</main>
       </div>
     `
   }
 }
 
-document.body.classList.add(styles.body)
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = '<app-root></app-root>'
 
 declare global {

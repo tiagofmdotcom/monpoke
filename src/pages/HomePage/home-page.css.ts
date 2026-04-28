@@ -1,7 +1,9 @@
-import { style } from '@vanilla-extract/css'
+import { css } from 'lit'
 
-export const page = style({
-  display: 'grid',
-  gridTemplateColumns: '200px 1fr',
-  gap: '16px',
-})
+export default css`
+  .page {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 200px 1fr;
+  }
+`

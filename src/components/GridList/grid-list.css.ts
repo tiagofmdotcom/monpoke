@@ -1,7 +1,9 @@
-import { style } from '@vanilla-extract/css'
+import { css } from 'lit'
 
-export const grid = style({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(4, 1fr)',
-  gap: '12px',
-})
+export default css`
+  .grid {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+`

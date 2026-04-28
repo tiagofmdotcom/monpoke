@@ -1,22 +1,21 @@
-import { LitElement, html } from 'lit'
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
-import * as styles from './item-card.css'
+import styles from './item-card.css.ts';
 
 @customElement('item-card')
 export class ItemCard extends LitElement {
-  protected createRenderRoot() {
-    return this
-  }
+  static styles = styles;
 
   render() {
     return html`
-      <article class=${styles.card}>
-          <img src="https://placekittens.com/200/200" width="200" height="200" alt="Item card" />
+      <article class="card">
+        <img src="https://placekittens.com/200/200" width="200" height="200" alt="Item card" />
         <footer>
           <span>Name</span>
           <span>☘️☠️</span>
         </footer>
-      </article>`
+      </article>
+    `;
   }
 }
