@@ -4,7 +4,10 @@ import './loading'
 
 const meta: Meta = {
   title: 'Components/Loading',
-  render: () => html`<loading-indicator></loading-indicator>`,
+  args: {
+    message: '',
+  },
+  render: (args) => html`<loading-indicator message=${args.message}></loading-indicator>`,
 }
 
 export default meta
@@ -14,5 +17,8 @@ type Story = StoryObj
 export const Default: Story = {}
 
 export const CustomMessage: Story = {
-  render: () => html`<loading-indicator message="Fetching products..."></loading-indicator>`,
+  args: {
+    message: 'Fetching products...',
+  },
+  render: (args) => html`<loading-indicator message=${args.message}></loading-indicator>`,
 }
