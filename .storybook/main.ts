@@ -1,5 +1,4 @@
 import type { StorybookConfig } from '@storybook/web-components-vite';
-import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import { mergeConfig } from 'vite';
 
 const config: StorybookConfig = {
@@ -12,10 +11,6 @@ const config: StorybookConfig = {
     "@storybook/addon-a11y",
     "@storybook/addon-docs"
   ],
-  "framework": "@storybook/web-components-vite",
-  viteFinal: async (config) =>
-    mergeConfig(config, {
-      plugins: [vanillaExtractPlugin()],
-    }),
+  "framework": "@storybook/web-components-vite"
 };
 export default config;
