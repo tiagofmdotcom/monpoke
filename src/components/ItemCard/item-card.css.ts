@@ -15,14 +15,17 @@ export default css`
     border-color: #ccc;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   }
-
-  img {
+  
+  .card-image {
+    overflow: hidden;
+  }
+  .card-image img {
     transition: transform 0.3s ease-in-out;
-    object-fit: cover;
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
-  .card img:hover {
+  .card-image img:hover {
     transform: scale(1.10);
   }
   .card-footer {
