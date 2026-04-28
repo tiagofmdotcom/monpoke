@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@lit-labs/router": "^0.1.4",
+    "@lit-labs/signals": "^0.2.0",
     "urlpattern-polyfill": "^10.1.0"
   }
 }

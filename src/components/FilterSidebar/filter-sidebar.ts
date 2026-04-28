@@ -1,37 +1,20 @@
-import { LitElement, html } from 'lit'
-import { customElement, state } from 'lit/decorators.js';
+import { SignalWatcher, html } from '@lit-labs/signals'
+import { LitElement } from 'lit'
+import { customElement } from 'lit/decorators.js'
 
 import '@components/CheckboxGroup/checkbox-group'
 
 import styles from './filter-sidebar.css.ts'
-import type { CheckboxGroupOption } from '@components/CheckboxGroup/checkbox-group.types';
-import type { CheckboxGroup } from '@components/CheckboxGroup/checkbox-group';
+import type { CheckboxGroupChangeEvent } from '@components/CheckboxGroup/checkbox-group.types'
+import { productTypeOptions, selectedProductTypes } from '~/state/products'
 
 @customElement('filter-sidebar')  
-export class FilterSidebar extends LitElement {
+export class FilterSidebar extends SignalWatcher(LitElement) {
   static styles = styles
 
-  @state()
-  declare filterOptions: CheckboxGroupOption[]
-
-  @state()
-  declare filterValue: string[]
-
-  constructor() {
-    super()
-
-    this.filterOptions = [
-      { label: 'Grass', value: 'grass' },
-      { label: 'Fire', value: 'fire' },
-      { label: 'Water', value: 'water' },
-    ]
-    this.filterValue = []
-  }
-
-  handleFilterChange(event: Event) {
-    const checkboxGroup = event.target as CheckboxGroup
-    this.filterValue = checkboxGroup.value
-    console.log(this.filterValue)
+  handleFilterChange(event: CheckboxGroupChangeEvent) {
+    selectedProductTypes.set(event.detail.value)
+    console.log(selectedProductTypes.get())
   }
 
   render() {
@@ -40,8 +23,8 @@ export class FilterSidebar extends LitElement {
         <checkbox-group
           label="Type"
           @change=${this.handleFilterChange}
-          .options=${this.filterOptions}
-          .value=${this.filterValue || []}
+          .options=${productTypeOptions}
+          .value=${selectedProductTypes}
         ></checkbox-group>
       </aside>`
   }
