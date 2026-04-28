@@ -1,6 +1,8 @@
-import { style } from '@vanilla-extract/css'
+import { css } from 'lit'
 
-export const sidebar = style({
-  border: '1px solid #ddd',
-  padding: '12px',
-})
+export default css`
+  .sidebar {
+    border: 1px solid #ddd;
+    padding: 12px;
+  }
+`
