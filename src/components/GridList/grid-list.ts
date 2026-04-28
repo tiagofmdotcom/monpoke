@@ -24,6 +24,7 @@ export class GridList extends SignalWatcher(LitElement) {
           (product) => html`
           <a href="#">
             <item-card
+                .badge=${`#${product.id}`}
                 .name=${product.name}
                 .imageUrl=${product.imageUrl}
                 .types=${product.types}

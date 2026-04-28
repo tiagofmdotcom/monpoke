@@ -5,11 +5,12 @@ import { getProductTypeColor } from '~/state/products'
 
 const meta: Meta = {
   title: 'Components/Item Card',
-  render: (args) => html`<item-card .name=${args.name} .imageUrl=${args.imageUrl} .types=${args.types}></item-card>`,
+  render: (args) => html`<item-card .badge=${args.badge} .name=${args.name} .imageUrl=${args.imageUrl} .types=${args.types}></item-card>`,
   parameters: {
     layout: 'centered',
   },
   args: {
+    badge: null,
     name: 'Item card',
     imageUrl: 'https://placekittens.com/200/200',
     types: [
@@ -25,3 +26,9 @@ export default meta
 type Story = StoryObj
 
 export const Default: Story = {}
+
+export const WithBadge: Story = {
+  args: {
+    badge: '#12',
+  },
+}

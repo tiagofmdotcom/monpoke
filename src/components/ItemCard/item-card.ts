@@ -9,6 +9,9 @@ export class ItemCard extends LitElement {
   static styles = styles;
 
   @property({ type: String })
+  declare badge: string;
+
+  @property({ type: String })
   declare name: string;
 
   @property({ type: String })
@@ -28,6 +31,7 @@ export class ItemCard extends LitElement {
   render() {
     return html`
       <article class="card">
+        ${this.badge ? html`<span class="card-badge">${this.badge}</span>` : ''}
         <div class="card-image">
           <img src=${this.imageUrl} width="96" height="96" alt=${this.name} />
         </div>
