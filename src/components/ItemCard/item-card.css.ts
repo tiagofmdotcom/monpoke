@@ -3,7 +3,6 @@ import { css } from 'lit'
 export default css`
   .card {
     border: 1px solid #ddd;
-    padding: 12px;
     transition: all 0.3s ease-in-out;
     border-radius: 12px;
     display: inline-grid;
@@ -18,6 +17,7 @@ export default css`
   
   .card-image {
     overflow: hidden;
+    border-radius: 12px 12px 0 0;
   }
   .card-image img {
     transition: transform 0.3s ease-in-out;
@@ -33,6 +33,8 @@ export default css`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 12px;
+    border-top: 1px solid #ddd;
   }
   .type-list {
     display: flex;
