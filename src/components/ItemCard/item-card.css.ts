@@ -42,6 +42,7 @@ export default css`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    image-rendering: pixelated;
   }
   .card-image img:hover {
     transform: scale(1.10);
