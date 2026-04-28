@@ -24,6 +24,8 @@ export class FilterSidebar extends SignalWatcher(LitElement) {
 
   render() {
     const isFetching = isFetchingTypes.get()
+    const options = productTypeOptions.get()
+    const selectedTypes = selectedProductTypes.get()
 
     return html`
      ${isFetching ? html`<loading-indicator></loading-indicator>` : ''}
@@ -33,8 +35,8 @@ export class FilterSidebar extends SignalWatcher(LitElement) {
         <checkbox-group
           label="Type"
           @change=${this.handleFilterChange}
-          .options=${productTypeOptions}
-          .value=${selectedProductTypes}
+          .options=${options}
+          .value=${selectedTypes}
         ></checkbox-group>
       </aside>` : ''}
     `
