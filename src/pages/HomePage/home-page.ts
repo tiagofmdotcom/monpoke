@@ -1,11 +1,12 @@
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
 
+import '@components/Button/button'
 import '@components/FilterSidebar/filter-sidebar'
 import '@components/GridList/grid-list'
 
 import styles from './home-page.css.ts'
-import { fetchProducts, loadNextPage, loadPreviousPage } from '~/state/products.ts';
+import { currentOffset, fetchProducts, loadNextPage, loadPreviousPage } from '~/state/products.ts';
 
 @customElement('home-page')
 export class HomePage extends LitElement {
@@ -27,8 +28,8 @@ export class HomePage extends LitElement {
           <grid-list></grid-list>
 
           <div class="pagination">
-            <button @click=${loadPreviousPage}>Load previous page</button>
-            <button @click=${loadNextPage}>Load next page</button>
+            <navigation-button @click=${loadPreviousPage} disabled=${currentOffset.get() === 0}>« Previous</navigation-button>
+            <navigation-button @click=${loadNextPage}>Next »</navigation-button>
           </div>
         </div>
       </section>
