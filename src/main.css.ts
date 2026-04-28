@@ -3,6 +3,7 @@ import { css } from 'lit'
 export default css`
   :host {
     display: block;
+    background-color: #f0f0f0;
   }
 
   .app-root {
@@ -14,15 +15,16 @@ export default css`
   .header {
     display: flex;
     justify-content: space-between;
-    background-color: #f0f0f0;
-    border-bottom: 1px solid #e0e0e0;
+    align-items: center;
+    border-bottom: 20px solid #222224;
     padding: 16px;
+    background-color: #ee1515;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   }
   
   .brand,
   .nav-link {
-    color: inherit;
+    color: white;
     text-decoration: none;
   }
 
@@ -33,6 +35,7 @@ export default css`
 
   .brand {
     font-weight: bold;
+    font-size: 24px;
   }
   
   .outlet {

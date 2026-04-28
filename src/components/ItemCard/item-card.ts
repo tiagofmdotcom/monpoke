@@ -33,16 +33,17 @@ export class ItemCard extends LitElement {
         </div>
         <footer class="card-footer">
           <span>${this.name}</span>
-          <span class="type-list" aria-label=${this.types.map((type) => type.name).join(', ')}>
-            ${this.types.map(
-              (type) => html`
-                <span class="type-dot" style="--type-color: ${type.color}" title=${type.name} aria-hidden="true" aria-label=${type.name}  >
-              </span>
-          `,
-        )}
-      </span>
-    </footer>
-  </article>  
-  `
+          <span class="type-list" role="list" aria-label="Product types">
+            ${this.types.map((type) => html`
+              <span class="type-dot"
+                role="listitem" 
+                aria-label=${type.name}
+                style="--type-color: ${type.color}" title=${type.name} 
+              ></span>
+            `)}
+          </span>
+        </footer>
+      </article>  
+    `
   }
 }

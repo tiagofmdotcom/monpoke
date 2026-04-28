@@ -6,7 +6,7 @@ import '@components/CheckboxGroup/checkbox-group'
 
 import styles from './filter-sidebar.css.ts'
 import type { CheckboxGroupChangeEvent } from '@components/CheckboxGroup/checkbox-group.types'
-import { fetchProducts, fetchTypes, productTypeOptions, selectedProductTypes } from '~/state/products'
+import { fetchProducts, fetchTypes, isFetchingTypes, productTypeOptions, selectedProductTypes } from '~/state/products'
 
 @customElement('filter-sidebar')  
 export class FilterSidebar extends SignalWatcher(LitElement) {
@@ -20,18 +20,23 @@ export class FilterSidebar extends SignalWatcher(LitElement) {
   handleFilterChange(event: CheckboxGroupChangeEvent) {
     selectedProductTypes.set(event.detail.value)
     fetchProducts(false)
-    console.log(selectedProductTypes.get())
   }
 
   render() {
+    const isFetching = isFetchingTypes.get()
+
     return html`
-      <aside class="sidebar">Filters
+     ${isFetching ? html`<loading-indicator></loading-indicator>` : ''}
+     ${!isFetching ? html`
+      <aside class="sidebar">
+        <p class="filters-title">Filters</p>
         <checkbox-group
           label="Type"
           @change=${this.handleFilterChange}
           .options=${productTypeOptions}
           .value=${selectedProductTypes}
         ></checkbox-group>
-      </aside>`
+      </aside>` : ''}
+    `
   }
 }

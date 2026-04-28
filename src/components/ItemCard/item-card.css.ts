@@ -2,6 +2,7 @@ import { css } from 'lit'
 
 export default css`
   .card {
+    background-color: white;
     border: 1px solid #ddd;
     transition: all 0.3s ease-in-out;
     border-radius: 12px;
@@ -18,6 +19,8 @@ export default css`
   .card-image {
     overflow: hidden;
     border-radius: 12px 12px 0 0;
+    min-width: 96px;
+    aspect-ratio: 1 / 1;
   }
   .card-image img {
     transition: transform 0.3s ease-in-out;

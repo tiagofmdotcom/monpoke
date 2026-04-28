@@ -15,11 +15,4 @@ export default css`
       grid-template-columns: repeat(1, 1fr);
     }
   }
-  @media (max-width: 500px) {
-  .loading {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #000;
-  }
 `

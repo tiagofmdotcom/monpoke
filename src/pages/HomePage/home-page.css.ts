@@ -7,7 +7,7 @@ export default css`
   .content {
     display: grid;
     gap: 16px;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 180px 1fr;
   }
   .pagination {
     display: flex;

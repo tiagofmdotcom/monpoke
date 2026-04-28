@@ -6,9 +6,9 @@ export default css`
   }
 
   .button {
-    border: 1px solid #2563eb;
+    border: 1px solid #394ac4;
     border-radius: 999px;
-    background: #2563eb;
+    background: #394ac4;
     color: #fff;
     cursor: pointer;
     font: inherit;
@@ -25,7 +25,6 @@ export default css`
     background: #1d4ed8;
     border-color: #1d4ed8;
     box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
-    transform: translateY(-1px);
   }
 
   .button:focus-visible {

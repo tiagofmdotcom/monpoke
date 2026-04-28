@@ -10,8 +10,9 @@ export default css`
   }
 
   .label {
-    font-weight: 600;
     margin-bottom: 4px;
+    color: #333;
+    margin-bottom: 6px;
   }
 
   .option {
