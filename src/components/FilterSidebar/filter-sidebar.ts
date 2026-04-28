@@ -6,14 +6,20 @@ import '@components/CheckboxGroup/checkbox-group'
 
 import styles from './filter-sidebar.css.ts'
 import type { CheckboxGroupChangeEvent } from '@components/CheckboxGroup/checkbox-group.types'
-import { productTypeOptions, selectedProductTypes } from '~/state/products'
+import { fetchProducts, fetchTypes, productTypeOptions, selectedProductTypes } from '~/state/products'
 
 @customElement('filter-sidebar')  
 export class FilterSidebar extends SignalWatcher(LitElement) {
   static styles = styles
 
+  connectedCallback() {
+    super.connectedCallback()
+    fetchTypes()
+  }
+
   handleFilterChange(event: CheckboxGroupChangeEvent) {
     selectedProductTypes.set(event.detail.value)
+    fetchProducts(false)
     console.log(selectedProductTypes.get())
   }
 

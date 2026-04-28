@@ -27,8 +27,8 @@ export class ItemCard extends LitElement {
   render() {
     return html`
       <article class="card">
-        <img src=${this.imageUrl} width="200" height="200" alt=${this.name} />
-        <footer>
+        <img src=${this.imageUrl} width="96" height="96" alt=${this.name} />
+        <footer class="card-footer">
           <span>${this.name}</span>
           <span>${this.types.join(', ')}</span>
         </footer>

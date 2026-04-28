@@ -1,4 +1,5 @@
 import type { Product, ProductType } from '~/state/products'
+import { PRODUCTS_PER_PAGE } from '~/state/products'
 
 const filterByTypeQuery = (type: string[] | null) => {
   if (type && type.length > 0) {
@@ -37,7 +38,7 @@ export const getProducts = async (type: string[] | null = null, offset: number =
         }
       `,
       variables: {
-        limit: 50,
+        limit: PRODUCTS_PER_PAGE,
         offset,
       },
       operationName: 'GetProducts',
