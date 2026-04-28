@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 
 import styles from './item-card.css.ts';
 
@@ -7,13 +7,30 @@ import styles from './item-card.css.ts';
 export class ItemCard extends LitElement {
   static styles = styles;
 
+  @property({ type: String })
+  declare name: string;
+
+  @property({ type: String })
+  declare imageUrl: string;
+
+  @property({ attribute: false })
+  declare types: string[];
+
+  constructor() {
+    super();
+
+    this.name = '';
+    this.imageUrl = '';
+    this.types = [];
+  }
+
   render() {
     return html`
       <article class="card">
-        <img src="https://placekittens.com/200/200" width="200" height="200" alt="Item card" />
+        <img src=${this.imageUrl} width="200" height="200" alt=${this.name} />
         <footer>
-          <span>Name</span>
-          <span>☘️☠️</span>
+          <span>${this.name}</span>
+          <span>${this.types.join(', ')}</span>
         </footer>
       </article>
     `;
