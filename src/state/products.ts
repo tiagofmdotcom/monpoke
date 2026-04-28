@@ -9,12 +9,19 @@ export const PRODUCTS_PER_PAGE = 24
 export type ProductType = {
   name: string
   id: number
+  color: string
 }
 export type Product = {
   id: number
   name: string
   imageUrl: string
   types: ProductType[]
+}
+
+export const getProductTypeColor = (typeIndex: number) => {
+  const hue = Math.round((typeIndex * 137.508) % 360)
+
+  return `hsl(${hue} 75% 54%)`
 }
 
 //PAGINATION
@@ -70,7 +77,7 @@ export const fetchTypes = async (useCache: boolean = true) => {
   const types = await getTypes()
   isFetchingTypes.set(false)
 
-  productTypeOptions.set(types.map((type: ProductType) => ({ label: type.name, value: type.name })))
+  productTypeOptions.set(types.map((type: ProductType) => ({ label: type.name, value: type.name, color: type.color })))
   
   if(useCache) {
   sessionStorage.setItem('productTypeOptions', JSON.stringify(productTypeOptions.get()))

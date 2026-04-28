@@ -19,4 +19,12 @@ export default css`
     display: flex;
     gap: 8px;
   }
+
+  .option-color {
+    background: var(--option-color);
+    border-radius: 999px;
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+  }
 `

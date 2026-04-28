@@ -2,6 +2,7 @@ import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import styles from './item-card.css.ts';
+import type { ProductType } from '~/state/products.ts';
 
 @customElement('item-card')
 export class ItemCard extends LitElement {
@@ -14,7 +15,7 @@ export class ItemCard extends LitElement {
   declare imageUrl: string;
 
   @property({ attribute: false })
-  declare types: string[];
+  declare types: ProductType[];
 
   constructor() {
     super();
@@ -32,9 +33,16 @@ export class ItemCard extends LitElement {
         </div>
         <footer class="card-footer">
           <span>${this.name}</span>
-          <span>${this.types.join(', ')}</span>
-        </footer>
-      </article>
-    `;
+          <span class="type-list" aria-label=${this.types.map((type) => type.name).join(', ')}>
+            ${this.types.map(
+              (type) => html`
+                <span class="type-dot" style="--type-color: ${type.color}" title=${type.name} aria-hidden="true" aria-label=${type.name}  >
+              </span>
+          `,
+        )}
+      </span>
+    </footer>
+  </article>  
+  `
   }
 }

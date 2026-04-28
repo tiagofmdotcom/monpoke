@@ -29,8 +29,20 @@ export default css`
     transform: scale(1.10);
   }
   .card-footer {
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+  .type-list {
+    display: flex;
+    gap: 6px;
+  }
+  .type-dot {
+    background: var(--type-color);
+    border-radius: 999px;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
   }
 `

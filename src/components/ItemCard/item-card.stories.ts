@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './item-card'
+import { getProductTypeColor } from '~/state/products'
 
 const meta: Meta = {
   title: 'Components/Item Card',
@@ -11,7 +12,11 @@ const meta: Meta = {
   args: {
     name: 'Item card',
     imageUrl: 'https://placekittens.com/200/200',
-    types: ['grass', 'fire', 'water'],
+    types: [
+      { id: 12, name: 'grass', color: getProductTypeColor(11) },
+      { id: 10, name: 'fire', color: getProductTypeColor(9) },
+      { id: 11, name: 'water', color: getProductTypeColor(10) },
+    ],
   },
 }
 

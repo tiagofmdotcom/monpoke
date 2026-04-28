@@ -1,5 +1,5 @@
 import type { Product, ProductType } from '~/state/products'
-import { PRODUCTS_PER_PAGE } from '~/state/products'
+import { getProductTypeColor, PRODUCTS_PER_PAGE } from '~/state/products'
 
 const filterByTypeQuery = (type: string[] | null) => {
   if (type && type.length > 0) {
@@ -26,11 +26,12 @@ export const getProducts = async (type: string[] | null = null, offset: number =
       query: `
         query GetProducts($limit: Int!, $offset: Int!
         ) {
-          pokemon(limit: $limit, offset: $offset${filterByTypeQuery(type)}) {
+          pokemon(limit: $limit, offset: $offset ${filterByTypeQuery(type)}) {
             id
             name
             pokemontypes {
               type {
+                id
                 name
               }
             }
@@ -45,11 +46,15 @@ export const getProducts = async (type: string[] | null = null, offset: number =
     }),
   })
   const data = await response.json()
-  return data.data.pokemon.map((result) => ({
+  return (data.data.pokemon).map((result) => ({
     id: result.id,
-    name: result.name,
+    name: result.name.charAt(0).toUpperCase() + result.name.slice(1).toLowerCase(),
     imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${result.id}.png`,
-    types: result.pokemontypes.map(({ type }) => type.name)
+    types: result.pokemontypes.map(({ type }) => ({
+      id: type.id,
+      name: type.name,
+      color: getProductTypeColor(type.id - 1),
+    }))
   })) as Product[]
 }
 
@@ -72,8 +77,9 @@ export const getTypes = async () => {
     }),
   })
   const data = await response.json()
-  return data.data.type.map((result) => ({
+  return (data.data.type).map((result) => ({
     name: result.name,
     id: result.id,
+    color: getProductTypeColor(result.id - 1),
   })) as ProductType[]
 }

@@ -39,6 +39,7 @@ export class CheckboxGroup extends LitElement {
                 .checked=${this.value.includes(option.value)}
                 @change=${(event: Event) => this.handleOptionChange(event, option.value)}
               />
+              ${option.color ? html`<span class="option-color" style="--option-color: ${option.color}"></span>` : null}
               <span>${option.label}</span>
             </label>
           `,
