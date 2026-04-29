@@ -15,6 +15,12 @@ export default css`
     align-items: center;
     grid-column: 2;
   }
+  @media (max-width: 850px) {
+    .pagination {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
   h1 {
     margin-top: 0;
   }
